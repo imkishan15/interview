@@ -31,7 +31,7 @@ const PaperWrapper = styled(Paper)`
   display: flex;
   gap: 12px;
   width: fit-content;
-  margin: 24px auto;
+  margin: 128px auto;
   background: black;
   align-items: center;
 `;
