@@ -64,9 +64,11 @@ const Description: React.FC<Props> = ({ data }) => {
         {showmore && (
           <StyledDescription>Details: {data.details}</StyledDescription>
         )}
-        <Button variant="filled" onClick={() => setShowmore(!showmore)}>
-          {showmore ? "Hide" : "See"} full description
-        </Button>
+        <center>
+          <Button variant="filled" onClick={() => setShowmore(!showmore)}>
+            {showmore ? "Hide" : "See"} full description
+          </Button>
+        </center>
       </DescriptionContainer>
     </div>
   );
