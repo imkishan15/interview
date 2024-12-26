@@ -48,14 +48,14 @@ const Filters: React.FC = () => {
     <FiltersContainer>
       <TextInput
         label="Name"
-        placeholder="Input placeholder"
+        placeholder="Search by name"
         onChange={(e) => handleNameChange(e.currentTarget.value)}
         value={name}
       />
 
       <MultiSelect
         label="Regions"
-        placeholder="Pick value"
+        placeholder="Pick regions"
         data={allRegions}
         value={regions}
         onChange={handleRegionsChange}

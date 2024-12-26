@@ -20,7 +20,7 @@ const StyledPaper = styled(Paper)`
   font-size: 18px;
   margin: auto;
   margin-top: 8px;
-  width: 80px;
+  width: max-content;
 `;
 
 const StyledButton = styled(Button)`
@@ -37,6 +37,8 @@ const ResourcesTable: React.FC = ({}) => {
     navigate(`${ROUTES.DETAILS}/${id}`);
   };
 
+  const formatTimeZone = (timeZone: string) => timeZone.replace(/_/g, " ");
+
   if (launchpads.length === 0) {
     return (
       <StyledPaper>
@@ -45,13 +47,16 @@ const ResourcesTable: React.FC = ({}) => {
       </StyledPaper>
     );
   }
+
   return (
     <TableContainer>
       <Table>
         <Table.Thead>
           <Table.Tr>
             {columns.map((column) => (
-              <Table.Th w={200} key={column}>{column}</Table.Th>
+              <Table.Th w={200} key={column}>
+                {column}
+              </Table.Th>
             ))}
           </Table.Tr>
         </Table.Thead>
@@ -61,7 +66,7 @@ const ResourcesTable: React.FC = ({}) => {
               <Table.Td>{row.name}</Table.Td>
               <Table.Td>{row.locality}</Table.Td>
               <Table.Td>{row.region}</Table.Td>
-              <Table.Td>{row.timezone}</Table.Td>
+              <Table.Td>{formatTimeZone(row.timezone)}</Table.Td>
               <Table.Td>{row.status}</Table.Td>
               <Table.Td>
                 <Button
