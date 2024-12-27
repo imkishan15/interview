@@ -6,6 +6,7 @@ import { ROUTES } from "../../routes/routes";
 import { useLaunchpadStore } from "../../store/app.store";
 import { IconArrowBigRight } from "@tabler/icons-react";
 import styled from "styled-components";
+import { formatTimeZone } from "../../utils/methods";
 
 const TableContainer = styled.div`
   margin: auto;
@@ -36,8 +37,6 @@ const ResourcesTable: React.FC = ({}) => {
   const onButtonClick = (id: string) => {
     navigate(`${ROUTES.DETAILS}/${id}`);
   };
-
-  const formatTimeZone = (timeZone: string) => timeZone.replace(/_/g, " ");
 
   if (launchpads.length === 0) {
     return (

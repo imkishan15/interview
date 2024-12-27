@@ -8,10 +8,4 @@ export const getAllLaunchpads = async () =>
 export const getOneLaunchpad = async (id: string) =>
   await axios.get(`${baseUrl}/launchpads/${id}`);
 
-export const showError = (message: string) => {
-  notifications.show({
-    title: "Error",
-    message: message,
-    autoClose: false,
-  });
-};
+export const formatTimeZone = (timeZone: string) => timeZone.replace(/_/g, " ");

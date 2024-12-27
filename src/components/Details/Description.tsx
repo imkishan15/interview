@@ -2,6 +2,7 @@ import React from "react";
 import { LaunchPads } from "../../utils/util";
 import { Button, Image, Table } from "@mantine/core";
 import styled from "styled-components";
+import { formatTimeZone } from "../../utils/methods";
 
 const ImageContainer = styled.div`
   display: flex;
@@ -52,7 +53,7 @@ const Description: React.FC<Props> = ({ data }) => {
           </Table.Tr>
           <Table.Tr>
             <Table.Th>Time Zone</Table.Th>
-            <Table.Td>{data.timezone}</Table.Td>
+            <Table.Td>{formatTimeZone(data.timezone)}</Table.Td>
           </Table.Tr>
           <Table.Tr>
             <Table.Th>Status</Table.Th>
