@@ -9,8 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { TableContainer } from "./DetailsTable";
 
 const StyledTitle = styled.h3`
-  width: 90%;
-  margin: auto;
+  margin: 32px;
 `;
 
 const RocketContainer = styled.div`
