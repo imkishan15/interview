@@ -1,3 +1,6 @@
+@import 'styles/abstracts/colours';
+@import 'styles/abstracts/fonts';
+
 * {
 	margin: 0;
 	padding: 0;
@@ -15,8 +18,8 @@
 		p {
 			font-size: clamp(1.1rem, 1.2vw, 2rem);
 		}
-		background: rgb(36, 36, 36);
-		color: whitesmoke;
+		background: var(--background);
+		color: var(--text);		
 	}
 }
 

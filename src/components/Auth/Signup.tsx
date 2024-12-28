@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { Button, Input } from "@mantine/core";
 import useAuthStore from "../../store/auth.store";
 import { ROUTES } from "../../routes/routes";
-import styled from "styled-components";
-import { Button, Input } from "@mantine/core";
 
 const FormContainer = styled.div`
   margin-top: 20px;
@@ -13,11 +13,12 @@ const FormContainer = styled.div`
 `;
 
 const SignUp: React.FC = () => {
+  const signUp = useAuthStore((state) => state.signUp);
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const signUp = useAuthStore((state) => state.signUp);
-  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

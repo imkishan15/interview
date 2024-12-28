@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import styled from "styled-components";
+import { Loader, Paper } from "@mantine/core";
+import { IconExclamationCircleFilled } from "@tabler/icons-react";
+import { useQuery } from "@tanstack/react-query";
 import { getAllLaunchpads } from "../../utils/methods";
 import ResourcesTable from "./ResourcesTable";
-import { Loader, Paper } from "@mantine/core";
 import { useLaunchpadStore } from "../../store/app.store";
 import Filters from "./Filters";
-import styled from "styled-components";
-import { IconExclamationCircleFilled } from "@tabler/icons-react";
+import { LaunchPad } from "../../utils/util";
 
 const StyledResults = styled.div`
   width: fit-content;
   padding: 4px 8px;
-  font-size: 18px;
+  font-size: 20px;
 `;
 
 const Header = styled.div`
@@ -22,8 +24,8 @@ const Header = styled.div`
 const ResourceContainer = styled.div`
   margin-top: 12px;
   padding: 24px;
-  background: #0a0a0a;
-  border-radius: 12px;
+  background: var(--darkblue);
+  border-radius: 8px;
 `;
 
 const PaperWrapper = styled(Paper)`
@@ -31,8 +33,8 @@ const PaperWrapper = styled(Paper)`
   display: flex;
   gap: 12px;
   width: fit-content;
-  margin: 128px auto;
-  background: black;
+  margin: 64px auto;
+  background: var(--darkblue);
   align-items: center;
 `;
 
@@ -54,35 +56,31 @@ const Resources: React.FC = () => {
   const addLaunchpadItem = useLaunchpadStore(
     (state) => state.addLaunchpadItems
   );
-
-  const [loading, setLoading] = useState(true);
-  const [showError, setShowError] = useState(false);
-
-  const getData = async () => {
-    await getAllLaunchpads()
-      .then((res) => addLaunchpadItem(res.data))
-      .catch((err) => setShowError(true))
-      .finally(() => setLoading(false));
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const { error, isLoading } = useQuery<LaunchPad[], Error>(
+    ["launchpads"],
+    getAllLaunchpads,
+    {
+      onSuccess: (data) => {
+        addLaunchpadItem(data);
+      },
+    }
+  );
 
   const launchpadsCount = useLaunchpadStore(
     (state) => state.filteredLaunchpad
   ).length;
 
-  if (loading) {
+  if (isLoading) {
     return loadingComponent("Loading details of all launchpads...");
   }
 
-  if (showError) {
+  if (error instanceof Error) {
     return errorComponent();
   }
 
   return (
     <ResourceContainer>
+      <h3>Details of Launchpads</h3>
       <Header>
         <Filters />
         {launchpadsCount !== 0 && (

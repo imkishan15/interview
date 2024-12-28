@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { LaunchPads } from "../../utils/util";
-import { Button, Paper } from "@mantine/core";
-import { getOneLaunchpad } from "../../utils/methods";
-import { IconArrowLeft } from "@tabler/icons-react";
-import Description from "./Description";
+import React from "react";
 import styled from "styled-components";
+import { Button, Paper } from "@mantine/core";
+import { IconArrowLeft } from "@tabler/icons-react";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
+import { LaunchPad } from "../../utils/util";
+import { getOneLaunchpad } from "../../utils/methods";
+import Description from "./Description";
 import { errorComponent, loadingComponent } from "../Resources/Resources";
 
 const DetailsContainer = styled(Paper)`
   margin: auto;
   width: 80%;
-  background: #000000;
-  border-radius: 8px;
+  background: var(--darkblue);
+  border-radius: 4px;
   margin: 24px auto;
   padding: 24px;
 `;
@@ -27,39 +28,29 @@ const Header = styled.div`
 
 const Details: React.FC = () => {
   const { id } = useParams();
-  const [data, setData] = useState<LaunchPads>();
-  const [loading, setLoading] = useState(true);
-  const [showError, setShowError] = useState(false);
 
-  const getLaunchpad = async (id: string) => {
-    await getOneLaunchpad(id)
-      .then((res) => setData(res.data))
-      .catch(() => setShowError(true))
-      .finally(() => setLoading(false));
-  };
-
-  useEffect(() => {
-    if (id) {
-      getLaunchpad(id);
-    }
-  }, []);
+  const { data, isLoading, error } = useQuery<LaunchPad, Error>(
+    ["launchpad", id],
+    () => getOneLaunchpad(id as string)
+  );
 
   const renderDetails = () => {
-    if (loading) {
-      return loadingComponent("Loading details...");
+    if (isLoading) {
+      return loadingComponent("Loading details of launchpad...");
     }
-    if (showError) {
+    if (error instanceof Error) {
       return errorComponent();
     }
-    return <Description data={data as LaunchPads} />;
+    return <Description data={data as LaunchPad} />;
   };
 
   return (
     <DetailsContainer>
       <Header>
-        <h4>{!loading && `Details for ${data?.name}`}</h4>
+        <h4>{!isLoading && `Details for ${data?.name}`}</h4>
         <Button
           variant="filled"
+          color="blue"
           leftSection={<IconArrowLeft size={14} />}
           onClick={() => window.history.back()}
         >

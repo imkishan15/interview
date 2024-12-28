@@ -1,14 +1,14 @@
 import { create } from "zustand";
-import { LaunchPads, STATUSVALUES } from "../utils/util";
+import { LaunchPad, STATUSVALUES } from "../utils/util";
 
 type LaunchpadStore = {
-  allLaunchpad: LaunchPads[];
-  filteredLaunchpad: LaunchPads[]; 
+  allLaunchpad: LaunchPad[];
+  filteredLaunchpad: LaunchPad[];
   regions: string[];
-  status: string[]; 
-  addLaunchpadItems: (items: LaunchPads[]) => void; 
-  filterLaunchpads: (name: string, regions: string[], status: string) => void; 
-  clearFilter: () => void; 
+  status: string[];
+  addLaunchpadItems: (items: LaunchPad[]) => void;
+  filterLaunchpads: (name: string, regions: string[], status: string) => void;
+  clearFilter: () => void;
 };
 
 export const useLaunchpadStore = create<LaunchpadStore>((set, get) => ({
@@ -25,8 +25,8 @@ export const useLaunchpadStore = create<LaunchpadStore>((set, get) => ({
 
       return {
         allLaunchpad: updatedAllLaunchpad,
-        filteredLaunchpad: updatedAllLaunchpad, 
-        regions: updatedRegions, 
+        filteredLaunchpad: updatedAllLaunchpad,
+        regions: updatedRegions,
       };
     }),
 

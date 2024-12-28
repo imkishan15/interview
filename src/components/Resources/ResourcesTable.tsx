@@ -1,19 +1,20 @@
 import React from "react";
-import { columns } from "../../utils/util";
-import { Button, Paper, Table } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../routes/routes";
-import { useLaunchpadStore } from "../../store/app.store";
-import { IconArrowBigRight } from "@tabler/icons-react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { Button, Paper, Table } from "@mantine/core";
+import { IconArrowBigRight } from "@tabler/icons-react";
+import { ROUTES } from "../../routes/routes";
+import { columns } from "../../utils/util";
+import { useLaunchpadStore } from "../../store/app.store";
 import { formatTimeZone } from "../../utils/methods";
 
 const TableContainer = styled.div`
   margin: auto;
   width: 100%;
-  background: #222222;
-  border-radius: 8px;
+  background: var(--lightblue);
+  border-radius: 4px;
   margin: 12px auto;
+  color: var(--text);
 `;
 
 const StyledPaper = styled(Paper)`
@@ -22,15 +23,10 @@ const StyledPaper = styled(Paper)`
   margin: auto;
   margin-top: 8px;
   width: max-content;
+  color: var(--darkblue);
 `;
 
-const StyledButton = styled(Button)`
-  background: green;
-  border-radius: 100%;
-  padding: 8px;
-`;
-
-const ResourcesTable: React.FC = ({}) => {
+const ResourcesTable: React.FC = () => {
   const navigate = useNavigate();
   const launchpads = useLaunchpadStore((state) => state.filteredLaunchpad);
 

@@ -14,10 +14,17 @@ const FiltersContainer = styled.div`
 `;
 
 const Filters: React.FC = () => {
-  const allRegions = useLaunchpadStore((state) => state.regions);
-  const statusValues = useLaunchpadStore((state) => state.status);
-  const filterData = useLaunchpadStore((state) => state.filterLaunchpads);
-  const clearAllFilter = useLaunchpadStore((state) => state.clearFilter);
+  const {
+    regions: allRegions,
+    status: statusValues,
+    filterLaunchpads: filterData,
+    clearFilter: clearAllFilter,
+  } = useLaunchpadStore((state) => ({
+    regions: state.regions,
+    status: state.status,
+    filterLaunchpads: state.filterLaunchpads,
+    clearFilter: state.clearFilter,
+  }));
 
   const [status, setStatus] = useState<STATUSVALUES>(STATUSVALUES.ANY);
   const [name, setName] = useState<string>("");
@@ -44,6 +51,7 @@ const Filters: React.FC = () => {
     setRegions([]);
     setStatus(STATUSVALUES.ANY);
   };
+
   return (
     <FiltersContainer>
       <TextInput
@@ -67,6 +75,7 @@ const Filters: React.FC = () => {
         checkIconPosition="right"
         data={statusValues}
         value={status}
+        allowDeselect={false}
         onChange={(value) => handleStatusChange(value as string)}
       />
 

@@ -11,6 +11,7 @@ import Login from "./components/Auth/Login";
 import Auth from "./components/Auth/Auth";
 import ProtectedRoute from "./pages/landing/ProtectedRoute";
 import PageNotFound from "./pages/notfound/PageNotFound";
+import AuthRedirect from "./pages/landing/AutoRedirect";
 
 export const routes = [
   {
@@ -19,7 +20,11 @@ export const routes = [
     children: [
       {
         path: ROUTES.LANDING,
-        element: <Auth />,
+        element: (
+          <AuthRedirect>
+            <Auth />
+          </AuthRedirect>
+        ),
         children: [
           {
             path: ROUTES.LOGIN,
@@ -64,9 +69,9 @@ const queryClient = new QueryClient({
   },
 });
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  </StrictMode>
+  // <StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+  // </StrictMode>
 );

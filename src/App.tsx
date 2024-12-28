@@ -12,7 +12,7 @@ export default function App() {
   }, [pathname]);
 
   return (
-    <MantineProvider defaultColorScheme="dark">
+    <MantineProvider defaultColorScheme="light">
       <Outlet />
     </MantineProvider>
   );

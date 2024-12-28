@@ -5,7 +5,6 @@ import Landing from "./Landing";
 
 const ProtectedRoute: React.FC = () => {
   const auth = useAuthStore((state) => state.auth);
-
   return auth ? <Landing /> : <Navigate to="/login" />;
 };
 

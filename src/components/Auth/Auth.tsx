@@ -1,15 +1,15 @@
 import React from "react";
+import styled from "styled-components";
 import { Button, Card, Title } from "@mantine/core";
 import { Outlet, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes/routes";
-import styled from "styled-components";
 
 const StyledCard = styled(Card)`
   margin: auto;
   width: 400px;
   padding: 30px;
   margin-top: 100px;
-  background: rgb(20, 20, 20);
+  background: var(--darkblue);
 `;
 
 const StyledSection = styled(Card.Section)`
@@ -18,6 +18,10 @@ const StyledSection = styled(Card.Section)`
   justify-content: space-evenly;
 `;
 
+const StyledTitle = styled(Title)`
+  color: var(--background);
+`
+
 const Auth: React.FC = () => {
   const navigate = useNavigate();
   const isLogin = window.location.pathname === ROUTES.LOGIN;
@@ -25,7 +29,7 @@ const Auth: React.FC = () => {
   return (
     <center>
       <StyledCard>
-        <Title>Authentication</Title>
+        <StyledTitle>Authentication</StyledTitle>
         <StyledSection>
           <Button
             m={10}

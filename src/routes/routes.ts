@@ -4,4 +4,5 @@ export enum ROUTES {
   DETAILS = "/details",
   LOGIN = "/login",
   SIGNUP = "/signup",
+  ROCKETS="/rockets"
 }

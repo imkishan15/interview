@@ -9,7 +9,7 @@ import { IconLogout } from "@tabler/icons-react";
 const StyledPaper = styled(Paper)`
   padding: 12px;
   font-size: 20px;
-  background: #000000;
+  background: var(--darkblue);
 `;
 
 const Header = styled.div`
@@ -17,7 +17,8 @@ const Header = styled.div`
   justify-content: space-between;
 `;
 const LandingContainer = styled.div`
-  margin: 24px;
+  margin: 24px 16px;
+  color: var(--greypurple);
 `;
 
 const Landing: React.FC = () => {
@@ -36,7 +37,7 @@ const Landing: React.FC = () => {
         </StyledPaper>
         <Button
           size="lg"
-          color="red"
+          color="violet"
           rightSection={<IconLogout stroke={1.5} />}
           onClick={logoutUser}
         >

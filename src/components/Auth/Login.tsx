@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { Button, Input } from "@mantine/core";
 import useAuthStore from "../../store/auth.store";
 import { ROUTES } from "../../routes/routes";
-import { Button, Input } from "@mantine/core";
-import styled from "styled-components";
 
 const FormContainer = styled.div`
   margin-top: 20px;
@@ -21,7 +21,7 @@ const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     login({ username, password });
-    if (sessionStorage.getItem("auth")) {
+    if (localStorage.getItem("auth")) {
       navigate(ROUTES.RESOURCES);
     }
   };
