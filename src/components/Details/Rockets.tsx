@@ -44,7 +44,7 @@ const Rockets: React.FC<RocketsProps> = ({ ids }) => {
 
   return (rockets as Rocket[]).map((rocket) => (
     <RocketContainer>
-      <StyledTitle>Rocket: {rocket.name}:</StyledTitle>
+      <StyledTitle>Rocket: {rocket.name}</StyledTitle>
       <TableContainer>
         <Table m="auto" variant="vertical" layout="fixed" withTableBorder>
           <Table.Tbody>
