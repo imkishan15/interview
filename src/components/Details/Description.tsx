@@ -9,11 +9,19 @@ import DetailsTable from "./DetailsTable";
 const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 24px 0;
+  margin: 24px auto;
+  width: 100%;
+  height: 300px;
+  @media (max-width: 600px) {
+    height: 200px;
+  }
 `;
 
 const DescriptionContainer = styled.div`
   margin: 24px 48px;
+  @media (max-width: 600px) {
+    margin: 16px 8px;
+  }
 `;
 
 export const StyledDescription = styled.p`
@@ -21,6 +29,9 @@ export const StyledDescription = styled.p`
   margin-bottom: 18px;
   width: 85%;
   margin: auto;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 type DescriptionProps = {
@@ -33,13 +44,7 @@ const Description: React.FC<DescriptionProps> = ({ data }) => {
   return (
     <div>
       <ImageContainer>
-        <Image
-          radius="md"
-          h={300}
-          w={400}
-          src={data.images.large[0]}
-          alt={data.name}
-        />
+        <Image radius="md" src={data.images.large[0]} alt={data.name} />
       </ImageContainer>
       <DetailsTable data={data} />
       <StyledDescription>Details: {data.details}</StyledDescription>

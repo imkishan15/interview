@@ -16,6 +16,9 @@ const DetailsContainer = styled(Paper)`
   border-radius: 4px;
   margin: 24px auto;
   padding: 24px;
+  @media (max-width: 600px) {
+    width: 98%;
+  }
 `;
 
 const Header = styled.div`
@@ -24,6 +27,10 @@ const Header = styled.div`
   align-items: end;
   margin-bottom: 12px;
   font-size: 24px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: baseline;
+  }
 `;
 
 const Details: React.FC = () => {

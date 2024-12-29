@@ -11,6 +11,10 @@ const FiltersContainer = styled.div`
   padding: 16px;
   gap: 18px;
   justify-content: space-between;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: baseline;
+  }
 `;
 
 const Filters: React.FC = () => {

@@ -10,6 +10,9 @@ import { TableContainer } from "./DetailsTable";
 
 const StyledTitle = styled.h3`
   margin: 32px;
+  @media (max-width: 600px) {
+    margin: 0;
+  }
 `;
 
 const RocketContainer = styled.div`
@@ -49,7 +52,7 @@ const Rockets: React.FC<RocketsProps> = ({ ids }) => {
           <Table.Tbody>
             {Object.entries(getRocketObject(rocket)).map(([key, value]) => (
               <Table.Tr key={key}>
-                <Table.Th w={180}>{key}</Table.Th>
+                <Table.Th w="50%">{key}</Table.Th>
                 <Table.Td>{value}</Table.Td>
               </Table.Tr>
             ))}

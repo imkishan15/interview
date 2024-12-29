@@ -10,6 +10,9 @@ const StyledCard = styled(Card)`
   padding: 30px;
   margin-top: 100px;
   background: var(--darkblue);
+  @media (max-width: 600px) {
+    width: 95%;
+  }
 `;
 
 const StyledSection = styled(Card.Section)`

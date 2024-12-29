@@ -8,13 +8,17 @@ import { IconLogout } from "@tabler/icons-react";
 
 const StyledPaper = styled(Paper)`
   padding: 12px;
-  font-size: 20px;
+  font-size: 18px;
   background: var(--darkblue);
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 4px;
+  }
 `;
 const LandingContainer = styled.div`
   margin: 24px 16px;

@@ -15,6 +15,9 @@ const TableContainer = styled.div`
   border-radius: 4px;
   margin: 12px auto;
   color: var(--text);
+  @media (max-width: 600px) {
+    overflow-x: scroll;
+  }
 `;
 
 const StyledPaper = styled(Paper)`
@@ -24,6 +27,9 @@ const StyledPaper = styled(Paper)`
   margin-top: 8px;
   width: max-content;
   color: var(--darkblue);
+  @media (max-width: 500px) {
+    width: fit-content;
+  }
 `;
 
 const ResourcesTable: React.FC = () => {

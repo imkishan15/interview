@@ -11,6 +11,9 @@ export const TableContainer = styled.div`
   background: var(--lightblue);
   width: 80%;
   color: var(--text);
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 type DetailsTableProps = {
@@ -32,7 +35,7 @@ const DetailsTable: React.FC<DetailsTableProps> = ({ data }) => {
         <Table.Tbody>
           {Object.entries(launchpadObject).map(([key, value]) => (
             <Table.Tr key={key}>
-              <Table.Th w={180}>{key}</Table.Th>
+              <Table.Th w="35%">{key}</Table.Th>
               <Table.Td>{value}</Table.Td>
             </Table.Tr>
           ))}

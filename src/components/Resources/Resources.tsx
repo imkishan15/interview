@@ -19,6 +19,10 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: end;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: baseline;
+  }
 `;
 
 const ResourceContainer = styled.div`
