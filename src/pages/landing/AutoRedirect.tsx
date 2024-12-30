@@ -9,7 +9,7 @@ type AuthRedirectProps = {
 
 const AuthRedirect: React.FC<AuthRedirectProps> = ({ children }) => {
   const auth = useAuthStore((state) => state.auth);
-  return auth ? <Navigate to={ROUTES.RESOURCES} /> : <>{children}</>;
+  return auth ? <Navigate to={ROUTES.LAUNCHPADS} /> : <>{children}</>;
 };
 
 export default AuthRedirect;

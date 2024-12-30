@@ -1,8 +1,8 @@
 export enum ROUTES {
   LANDING = "/",
-  RESOURCES = "/resources",
+  LAUNCHPADS = "/launchpads",
   DETAILS = "/details",
   LOGIN = "/login",
   SIGNUP = "/signup",
-  ROCKETS="/rockets"
+  ROCKETS = "/rockets",
 }

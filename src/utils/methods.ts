@@ -1,5 +1,5 @@
 import axios from "axios";
-import SHA256 from 'crypto-js/sha256';
+import SHA256 from "crypto-js/sha256";
 import { baseUrl, LaunchPad, Rocket } from "./util";
 
 export const getAllLaunchpads = async (): Promise<LaunchPad[]> =>
@@ -15,4 +15,15 @@ export const getRocketsByIds = async (ids: string[]): Promise<Rocket[]> =>
 
 export const formatTimeZone = (timeZone: string) => timeZone.replace(/_/g, " ");
 
-export const getHashedPassword = (password: string) => SHA256(password).toString();
+export const getHashedPassword = (password: string) =>
+  SHA256(password).toString();
+
+export const isValidPassword = (password: string) => {
+  const minLength = password.length >= 8;
+  const hasUppercase = /[A-Z]/.test(password);
+  const hasLowercase = /[a-z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+  return minLength && hasUppercase && hasLowercase && hasNumber && hasSymbol;
+};

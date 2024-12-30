@@ -13,19 +13,17 @@ type AuthState = {
 const useAuthStore = create<AuthState>((set, get) => ({
   auth: JSON.parse(localStorage.getItem("auth") || "null"),
   users: JSON.parse(localStorage.getItem("users") || "[]"),
-
-  login: (user) => {
+  
+  login: (userInput) => {
     const users = get().users;
-    const existingUser = users.find(
-      (inputUser) => inputUser.username === user.username
-    );
+    const existingUser = users.find((user) => user.username === userInput.username);
 
     if (!existingUser) {
       alert("User not found");
       return;
     }
 
-    if (existingUser.password !== getHashedPassword(user.password)) {
+    if (existingUser.password !== getHashedPassword(userInput.password)) {
       alert("Wrong password");
       return;
     }
@@ -34,19 +32,19 @@ const useAuthStore = create<AuthState>((set, get) => ({
     set({ auth: existingUser });
   },
 
-  signUp: (user) => {
+  signUp: (userInput) => {
     const users = get().users;
-    const existingUser = users.find(
-      (userInput) => userInput.username === user.username
-    );
+    const existingUser = users.find((user) => user.username === userInput.username);
 
     if (existingUser) {
       return "Username already exists";
     }
+
     const newUser = {
-      username: user.username,
-      password: getHashedPassword(user.password),
+      username: userInput.username,
+      password: getHashedPassword(userInput.password),
     };
+    
     const updatedUsers = [...users, newUser];
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     set({ users: updatedUsers });

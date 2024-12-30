@@ -32,7 +32,7 @@ const StyledPaper = styled(Paper)`
   }
 `;
 
-const ResourcesTable: React.FC = () => {
+const LaunchpadsTable: React.FC = () => {
   const navigate = useNavigate();
   const launchpads = useLaunchpadStore((state) => state.filteredLaunchpad);
 
@@ -89,4 +89,4 @@ const ResourcesTable: React.FC = () => {
   );
 };
 
-export default ResourcesTable;
+export default LaunchpadsTable;

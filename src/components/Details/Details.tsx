@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { Button, Paper } from "@mantine/core";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { LaunchPad } from "../../utils/util";
 import { getOneLaunchpad } from "../../utils/methods";
 import Description from "./Description";
-import { errorComponent, loadingComponent } from "../Resources/Resources";
+import { errorComponent, loadingComponent } from "../Launchpads/Launchpads";
+import { ROUTES } from "../../routes/routes";
 
 const DetailsContainer = styled(Paper)`
   margin: auto;
@@ -35,6 +36,7 @@ const Header = styled.div`
 
 const Details: React.FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const { data, isLoading, error } = useQuery<LaunchPad, Error>(
     ["launchpad", id],
@@ -59,9 +61,9 @@ const Details: React.FC = () => {
           variant="filled"
           color="blue"
           leftSection={<IconArrowLeft size={14} />}
-          onClick={() => window.history.back()}
+          onClick={() => navigate(ROUTES.LAUNCHPADS)}
         >
-          Back
+          Back to launchpads
         </Button>
       </Header>
       {renderDetails()}

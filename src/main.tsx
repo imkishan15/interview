@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import App from "./App";
 import Details from "./components/Details/Details";
 import { ROUTES } from "./routes/routes";
-import Resources from "./components/Resources/Resources";
+import Launchpads from "./components/Launchpads/Launchpads";
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import Auth from "./components/Auth/Auth";
@@ -40,8 +40,8 @@ export const routes = [
         element: <ProtectedRoute />,
         children: [
           {
-            path: ROUTES.RESOURCES,
-            element: <Resources />,
+            path: ROUTES.LAUNCHPADS,
+            element: <Launchpads />,
           },
           {
             path: `${ROUTES.DETAILS}/:id`,

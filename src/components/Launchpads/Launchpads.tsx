@@ -4,7 +4,7 @@ import { Loader, Paper } from "@mantine/core";
 import { IconExclamationCircleFilled } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import { getAllLaunchpads } from "../../utils/methods";
-import ResourcesTable from "./ResourcesTable";
+import LaunchpadsTable from "./LaunchpadTable";
 import { useLaunchpadStore } from "../../store/app.store";
 import Filters from "./Filters";
 import { LaunchPad } from "../../utils/util";
@@ -56,7 +56,7 @@ export const errorComponent = () => (
   </PaperWrapper>
 );
 
-const Resources: React.FC = () => {
+const Launchpads: React.FC = () => {
   const addLaunchpadItem = useLaunchpadStore(
     (state) => state.addLaunchpadItems
   );
@@ -95,9 +95,9 @@ const Resources: React.FC = () => {
           </StyledResults>
         )}
       </Header>
-      <ResourcesTable />
+      <LaunchpadsTable />
     </ResourceContainer>
   );
 };
 
-export default Resources;
+export default Launchpads;

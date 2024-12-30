@@ -22,7 +22,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     login({ username, password });
     if (localStorage.getItem("auth")) {
-      navigate(ROUTES.RESOURCES);
+      navigate(ROUTES.LAUNCHPADS);
     }
   };
 

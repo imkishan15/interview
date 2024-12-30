@@ -4,7 +4,7 @@ import { Rocket } from "../../utils/util";
 import { StyledDescription } from "./Description";
 import { Table } from "@mantine/core";
 import styled from "styled-components";
-import { errorComponent, loadingComponent } from "../Resources/Resources";
+import { errorComponent, loadingComponent } from "../Launchpads/Launchpads";
 import { useQuery } from "@tanstack/react-query";
 import { TableContainer } from "./DetailsTable";
 
@@ -52,7 +52,7 @@ const Rockets: React.FC<RocketsProps> = ({ ids }) => {
           <Table.Tbody>
             {Object.entries(getRocketObject(rocket)).map(([key, value]) => (
               <Table.Tr key={key}>
-                <Table.Th w="50%">{key}</Table.Th>
+                <Table.Th w="40%">{key}</Table.Th>
                 <Table.Td>{value}</Table.Td>
               </Table.Tr>
             ))}

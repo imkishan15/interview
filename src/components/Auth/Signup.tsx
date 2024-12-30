@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Input } from "@mantine/core";
 import useAuthStore from "../../store/auth.store";
 import { ROUTES } from "../../routes/routes";
+import { isValidPassword } from "../../utils/methods";
 
 const FormContainer = styled.div`
   margin-top: 20px;
@@ -22,6 +23,13 @@ const SignUp: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!isValidPassword(password)) {
+      alert(
+        "Please enter password with at least 1 uppercase, 1 lowercase, 1 symbol, 1 number and minimum length of 8 characters."
+      );
+      return;
+    }
 
     if (password !== confirmPassword) {
       alert("Passwords do not match");
